@@ -19,12 +19,14 @@ module Profitbricks
       #
       # @param [Hash] options either name or id of the Image
       # @option options [String] :name The name of the Image
+      # @option options [String] :location The name of the Image
       # @option options [String] :id The id of the Image
       # @return [Image] The found Image Object 
       def find(options = {})
         image = nil
         if options[:name]
-          image = PB::Image.all().select { |d| d.name == options[:name] && (options[:region] ? d.region == options[:region] : true) }.first
+          #image = PB::Image.all().select { |d| d.name == options[:name] && (options[:region] ? d.region == options[:region] : true) }.first
+          image = PB::Image.all().select { |d| d.name == options[:name] && (options[:region] ? d.region == options[:region] : true) && d.location == options[:location] }.first
           options[:id] = image.id if image
         end
         raise "Unable to locate the image named '#{options[:name]}'" unless options[:id]
