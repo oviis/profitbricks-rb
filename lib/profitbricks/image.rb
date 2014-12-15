@@ -26,7 +26,7 @@ module Profitbricks
         image = nil
         if options[:name]
           #image = PB::Image.all().select { |d| d.name == options[:name] && (options[:region] ? d.region == options[:region] : true) }.first
-          image = PB::Image.all().select { |d| d.name == options[:name] && (options[:region] ? d.region == options[:region] : true) && d.location == options[:location] }.first
+          image = PB::Image.all().select { |d| d.name == options[:name] && (options[:location] ? d.location == options[:location] : true) }.first
           options[:id] = image.id if image
         end
         raise "Unable to locate the image named '#{options[:name]}'" unless options[:id]

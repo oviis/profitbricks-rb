@@ -9,7 +9,7 @@ module Profitbricks
   #
   # @see Profitbricks::Config
   def self.configure(&block)
-    Profitbricks::Config.save_responses = false
+    Profitbricks::Config.save_responses = true
     Profitbricks::Config.log = false
     Profitbricks::Config.global_classes = true
     Profitbricks::Config.polling_interval = 1
@@ -19,7 +19,7 @@ module Profitbricks
 
     @client = Savon::Client.new do |globals|
       # FIXME the WSDL currently returns a wrong endpoint
-      globals.wsdl "https://api.profitbricks.com/1.2/wsdl"
+      globals.wsdl "https://api.profitbricks.com/1.3/wsdl"
       globals.convert_request_keys_to :lower_camelcase
       globals.raise_errors true
       globals.log Profitbricks::Config.log
