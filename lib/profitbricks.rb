@@ -16,7 +16,7 @@ require 'profitbricks/rule'
 require 'profitbricks/snapshot'
 
 module Profitbricks
-  VERSION = '1.1.1'
+  VERSION = '1.1.5'
 end
 
 PB = Profitbricks
